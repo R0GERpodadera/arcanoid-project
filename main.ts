@@ -22,6 +22,7 @@ let Bally = 0
 let trueorfalse = 100
 let random = randint(1, 2)
 let ballspeed = 500
+let score = 0
 // codigo de la barra
 basic.forever(function () {
     led.plot(barposition, 4)
@@ -35,9 +36,11 @@ basic.forever(function () {
         ballx += -1
         if (Bally == 3 && (ballx == barposition || (ballx == barposition + 1 || (ballx == barposition - 1 || ballx == barposition + 1 + 0)))) {
             trueorfalse = 0
+            score += 1
         }
         if (Bally == 4) {
-            basic.showString("YOU LOST")
+            basic.showString("Score")
+            basic.showString("" + (score))
         }
     }
     while (trueorfalse == 130) {
@@ -49,9 +52,11 @@ basic.forever(function () {
         ballx += 1
         if (Bally == 3 && (ballx == barposition || (ballx == barposition + 1 || (ballx == barposition - 1 || ballx == barposition + 1 + 0)))) {
             trueorfalse = 0
+            score += 1
         }
         if (Bally == 4) {
-            basic.showString("YOU LOST")
+            basic.showString("Score")
+            basic.showString("" + (score))
         }
     }
     while (trueorfalse == 100) {
@@ -75,9 +80,11 @@ basic.forever(function () {
         }
         if (Bally == 3 && (ballx == barposition || (ballx == barposition + 1 || (ballx == barposition - 1 || ballx == barposition + 1 + 0)))) {
             trueorfalse = 0
+            score += 1
         }
         if (Bally == 4) {
-            basic.showString("YOU LOST")
+            basic.showString("Score:")
+            basic.showString("" + (score))
         }
     }
     while (trueorfalse == 50) {
