@@ -56,8 +56,8 @@ basic.forever(function () {
         if (ballx == 0) {
             balldx = balldx * -1
         }
-        if (Bally == 0) {
-            balldy = balldy * -1
+        if (Bally == 0 && balldy == -1) {
+            radio.sendNumber(ballx)
         }
         if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
             balldy = balldy * -1
