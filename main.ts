@@ -2,7 +2,12 @@ enum RadioMessage {
     message1 = 49434
 }
 radio.onReceivedNumber(function (receivedNumber) {
-    recibido = receivedNumber
+    if (message == true) {
+        recibido = receivedNumber
+        message = false
+    } else {
+        activo = receivedNumber
+    }
 })
 input.onButtonPressed(Button.A, function () {
     if (barposition > 0) {
@@ -22,6 +27,8 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 let enviado = 0
+let message = false
+let activo = 0
 let recibido = 0
 let barposition = 0
 barposition = 2
@@ -32,6 +39,8 @@ let balldx = -1
 let balldy = -1
 let tiempo = 500
 recibido = 0
+activo = 2
+message = true
 radio.setGroup(1)
 // codigo de la barra
 basic.forever(function () {
@@ -44,6 +53,9 @@ basic.forever(function () {
     led.plot(barposition, 4)
     led.plot(barposition + 1, 4)
     if (enviado > recibido) {
+        activo = 1
+    }
+    if (activo == 1) {
         led.plot(ballx + balldx, Bally + balldy)
         led.unplot(ballx, Bally)
         basic.pause(tiempo)
@@ -57,7 +69,32 @@ basic.forever(function () {
             balldx = balldx * -1
         }
         if (Bally == 0 && balldy == -1) {
-            radio.sendNumber(ballx)
+            radio.sendNumber(0)
+        }
+        if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
+            balldy = balldy * -1
+            score = score + 1
+        }
+        if (Bally == 4) {
+            basic.showString("Score")
+            basic.showString("" + (score))
+        }
+    }
+    if (activo == 0) {
+        led.plot(ballx + balldx, Bally + balldy)
+        led.unplot(ballx, Bally)
+        basic.pause(tiempo)
+        tiempo = tiempo - 3
+        ballx = ballx + balldx
+        Bally = Bally + balldy
+        if (ballx == 4) {
+            balldx = balldx * -1
+        }
+        if (ballx == 0) {
+            balldx = balldx * -1
+        }
+        if (Bally == 0 && balldy == -1) {
+            radio.sendNumber(1)
         }
         if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
             balldy = balldy * -1
