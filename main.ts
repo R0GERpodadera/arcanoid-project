@@ -2,11 +2,13 @@ enum RadioMessage {
     message1 = 49434
 }
 radio.onReceivedNumber(function (receivedNumber) {
-    if (message == true) {
+    if (intro == true) {
         recibido = receivedNumber
-        message = false
-    } else {
-        activo = receivedNumber
+    }
+    if (intro == false) {
+        ballx = receivedNumber
+        Bally = receivedNumber
+        balldy = receivedNumber
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -27,20 +29,22 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 let enviado = 0
-let message = false
-let activo = 0
+let intro = false
 let recibido = 0
+let balldy = 0
+let Bally = 0
+let ballx = 0
 let barposition = 0
 barposition = 2
 let score = 0
-let ballx = 3
-let Bally = 2
+ballx = 3
+Bally = 2
 let balldx = -1
-let balldy = -1
+balldy = -1
 let tiempo = 500
 recibido = 0
-activo = 2
-message = true
+let activo = 2
+intro = true
 radio.setGroup(1)
 // codigo de la barra
 basic.forever(function () {
@@ -69,7 +73,9 @@ basic.forever(function () {
             balldx = balldx * -1
         }
         if (Bally == 0 && balldy == -1) {
-            radio.sendNumber(0)
+            radio.sendNumber(ballx)
+            radio.sendNumber(Bally)
+            radio.sendNumber(balldy * -1)
         }
         if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
             balldy = balldy * -1
@@ -81,28 +87,6 @@ basic.forever(function () {
         }
     }
     if (activo == 0) {
-        led.plot(ballx + balldx, Bally + balldy)
-        led.unplot(ballx, Bally)
-        basic.pause(tiempo)
-        tiempo = tiempo - 3
-        ballx = ballx + balldx
-        Bally = Bally + balldy
-        if (ballx == 4) {
-            balldx = balldx * -1
-        }
-        if (ballx == 0) {
-            balldx = balldx * -1
-        }
-        if (Bally == 0 && balldy == -1) {
-            radio.sendNumber(1)
-        }
-        if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
-            balldy = balldy * -1
-            score = score + 1
-        }
-        if (Bally == 4) {
-            basic.showString("Score")
-            basic.showString("" + (score))
-        }
+    	
     }
 })
