@@ -66,15 +66,20 @@ OrgRec = 1
 radio.setGroup(1)
 // codigo de la barra
 basic.forever(function () {
-    while (recibido == 0) {
-        radio.sendNumber(enviado)
-        basic.pause(100)
-    }
-    intro = 0
-    led.plot(barposition, 4)
-    led.plot(barposition + 1, 4)
-    if (enviado > recibido) {
-        activo = 1
+    if (intro == 1) {
+        while (recibido == 0) {
+            radio.sendNumber(enviado)
+            basic.pause(100)
+        }
+        led.plot(barposition, 4)
+        led.plot(barposition + 1, 4)
+        if (enviado > recibido) {
+            activo = 1
+            basic.pause(200)
+        } else {
+            activo = 0
+        }
+        intro = 0
     }
     if (activo == 1) {
         led.plot(ballx + balldx, Bally + balldy)
@@ -90,8 +95,11 @@ basic.forever(function () {
             balldx = balldx * -1
         }
         if (Bally == 0 && balldy == -1) {
+            led.unplot(ballx, Bally)
             radio.sendNumber(ballx)
-            radio.sendNumber(Bally)
+            basic.pause(25)
+            radio.sendNumber(0)
+            basic.pause(25)
             radio.sendNumber(balldx)
             activo = 0
         }
