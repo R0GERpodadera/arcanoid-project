@@ -41,6 +41,7 @@ input.onButtonPressed(Button.B, function () {
         led.plot(barposition + 1, 4)
     }
 })
+let score = 0
 let activo = 0
 let OrgRec = 0
 let intro = 0
@@ -54,7 +55,6 @@ let enviado = 0
 enviado = randint(1, 100)
 recibido = 0
 barposition = 2
-let score = 0
 ballx = 3
 Bally = 2
 balldx = -1
@@ -75,7 +75,7 @@ basic.forever(function () {
         led.plot(barposition + 1, 4)
         if (enviado > recibido) {
             activo = 1
-            basic.pause(200)
+            basic.pause(100)
         } else {
             activo = 0
         }
@@ -97,9 +97,7 @@ basic.forever(function () {
         if (Bally == 0 && balldy == -1) {
             led.unplot(ballx, Bally)
             radio.sendNumber(ballx)
-            basic.pause(25)
             radio.sendNumber(0)
-            basic.pause(25)
             radio.sendNumber(balldx)
             activo = 0
         }
