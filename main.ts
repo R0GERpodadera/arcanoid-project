@@ -96,8 +96,11 @@ basic.forever(function () {
         }
         if (Bally == 0 && balldy == -1) {
             led.unplot(ballx, Bally)
+            basic.pause(30)
             radio.sendNumber(ballx)
+            basic.pause(30)
             radio.sendNumber(0)
+            basic.pause(30)
             radio.sendNumber(balldx)
             activo = 0
         }
