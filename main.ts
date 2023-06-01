@@ -10,14 +10,17 @@ radio.onReceivedNumber(function (receivedNumber) {
         if (OrgRec == 1) {
             ballx = receivedNumber
         }
+        basic.pause(10)
         if (OrgRec == 2) {
             Bally = receivedNumber
         }
+        basic.pause(10)
         if (OrgRec == 3) {
             balldx = receivedNumber
             activo = 1
             balldy = 1
         }
+        basic.pause(10)
         OrgRec = OrgRec + 1
         if (OrgRec == 4) {
             OrgRec = 1
