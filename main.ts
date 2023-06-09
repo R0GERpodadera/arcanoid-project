@@ -12,7 +12,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         basic.pause(10)
         if (OrgRec == 2) {
-            Bally = receivedNumber
+            Bally = -1
         }
         basic.pause(10)
         if (OrgRec == 3) {
@@ -99,12 +99,12 @@ basic.forever(function () {
         }
         if (Bally == 0 && balldy == -1) {
             led.unplot(ballx, Bally)
-            basic.pause(30)
-            radio.sendNumber(ballx)
-            basic.pause(30)
-            radio.sendNumber(0)
-            basic.pause(30)
-            radio.sendNumber(balldx)
+            basic.pause(100)
+            radio.sendNumber(Math.abs(ballx - 4))
+            basic.pause(100)
+            radio.sendNumber(-1)
+            basic.pause(100)
+            radio.sendNumber(balldx * -1)
             activo = 0
         }
         if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
