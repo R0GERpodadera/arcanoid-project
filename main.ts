@@ -8,7 +8,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (intro == 0) {
         if (OrgRec == 1) {
-            ballx = 2
+            ballx = 3
         }
         basic.pause(10)
         if (OrgRec == 2) {
