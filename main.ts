@@ -8,7 +8,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (intro == 0) {
         if (OrgRec == 1) {
-            ballx = 3
+            ballx = 2
         }
         basic.pause(10)
         if (OrgRec == 2) {
@@ -24,6 +24,10 @@ radio.onReceivedNumber(function (receivedNumber) {
         OrgRec = OrgRec + 1
         if (OrgRec == 4) {
             OrgRec = 1
+        }
+        if (receivedNumber == 10) {
+            basic.showString("you win")
+            basic.showIcon(IconNames.Happy)
         }
     }
 })
@@ -44,7 +48,6 @@ input.onButtonPressed(Button.B, function () {
         led.plot(barposition + 1, 4)
     }
 })
-let score = 0
 let activo = 0
 let OrgRec = 0
 let intro = 0
@@ -109,11 +112,11 @@ basic.forever(function () {
         }
         if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
             balldy = balldy * -1
-            score = score + 1
         }
         if (Bally == 4) {
-            basic.showString("Score")
-            basic.showString("" + (score))
+            radio.sendNumber(10)
+            basic.showString("YOU LOST")
+            basic.showIcon(IconNames.Sad)
         }
     }
 })
