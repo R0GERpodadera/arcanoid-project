@@ -8,7 +8,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (intro == 0) {
         if (OrgRec == 1) {
-            ballx = receivedNumber
+            ballx = 2
         }
         basic.pause(10)
         if (OrgRec == 2) {
@@ -100,7 +100,7 @@ basic.forever(function () {
         if (Bally == 0 && balldy == -1) {
             led.unplot(ballx, Bally)
             basic.pause(100)
-            radio.sendNumber(Math.abs(ballx - 4))
+            radio.sendNumber(2)
             basic.pause(100)
             radio.sendNumber(-1)
             basic.pause(100)
