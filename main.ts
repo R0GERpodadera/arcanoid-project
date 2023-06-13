@@ -27,6 +27,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         if (receivedNumber == 10) {
             basic.showString("you win")
+            basic.pause(200)
             basic.showIcon(IconNames.Happy)
         }
     }
