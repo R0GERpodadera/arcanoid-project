@@ -4,9 +4,9 @@ enum RadioMessage {
 radio.onReceivedNumber(function (receivedNumber) {
     if (intro == 1) {
         recibido = receivedNumber
+        basic.showNumber(recibido)
         radio.sendNumber(enviado)
-    }
-    if (intro == 0) {
+    } else {
         if (OrgRec == 1) {
             ballx = receivedNumber
             basic.showNumber(ballx)
