@@ -8,22 +8,21 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (intro == 0) {
         if (OrgRec == 1) {
-            ballx = 2
+            ballx = receivedNumber
+            basic.showNumber(ballx)
         }
-        basic.pause(10)
         if (OrgRec == 2) {
             Bally = -1
+            basic.showNumber(Bally)
         }
-        basic.pause(10)
         if (OrgRec == 3) {
             balldx = receivedNumber
-            activo = 1
             balldy = 1
         }
-        basic.pause(10)
         OrgRec = OrgRec + 1
         if (OrgRec == 4) {
             OrgRec = 1
+            activo = 1
         }
         if (receivedNumber == 10) {
             basic.showString("you win")
@@ -103,11 +102,10 @@ basic.forever(function () {
         }
         if (Bally == 0 && balldy == -1) {
             led.unplot(ballx, Bally)
-            basic.pause(100)
-            radio.sendNumber(2)
-            basic.pause(100)
+            radio.sendNumber(Math.abs(ballx - 4))
+            basic.pause(50)
             radio.sendNumber(-1)
-            basic.pause(100)
+            basic.pause(50)
             radio.sendNumber(balldx * -1)
             activo = 0
         }
