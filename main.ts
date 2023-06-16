@@ -94,7 +94,7 @@ basic.forever(function () {
         led.plot(ballx + balldx, Bally + balldy)
         led.unplot(ballx, Bally)
         basic.pause(tiempo)
-        tiempo = tiempo - 4
+        tiempo = tiempo - 5
         ballx = ballx + balldx
         Bally = Bally + balldy
         if (ballx == 4) {
