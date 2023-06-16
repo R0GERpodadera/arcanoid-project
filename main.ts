@@ -4,16 +4,13 @@ enum RadioMessage {
 radio.onReceivedNumber(function (receivedNumber) {
     if (intro == 1) {
         recibido = receivedNumber
-        basic.showNumber(recibido)
         radio.sendNumber(enviado)
     } else {
         if (OrgRec == 1) {
             ballx = receivedNumber
-            basic.showNumber(ballx)
         }
         if (OrgRec == 2) {
             Bally = -1
-            basic.showNumber(Bally)
         }
         if (OrgRec == 3) {
             balldx = receivedNumber
@@ -79,6 +76,7 @@ basic.forever(function () {
         }
         led.plot(barposition, 4)
         led.plot(barposition + 1, 4)
+        basic.pause(500)
         if (enviado > recibido) {
             activo = 1
             basic.pause(100)
