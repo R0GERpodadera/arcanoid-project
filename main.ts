@@ -4,7 +4,10 @@ enum RadioMessage {
 radio.onReceivedNumber(function (receivedNumber) {
     if (intro == 1) {
         recibido = receivedNumber
-        radio.sendNumber(enviado)
+        if (message == 1) {
+            radio.sendNumber(enviado)
+            message = 2
+        }
     } else {
         if (OrgRec == 1) {
             ballx = receivedNumber
@@ -46,6 +49,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 let activo = 0
+let message = 0
 let OrgRec = 0
 let intro = 0
 let balldy = 0
@@ -66,6 +70,7 @@ let tiempo = 500
 recibido = 0
 intro = 1
 OrgRec = 1
+message = 1
 radio.setGroup(1)
 // codigo de la barra
 basic.forever(function () {
@@ -76,7 +81,7 @@ basic.forever(function () {
         }
         led.plot(barposition, 4)
         led.plot(barposition + 1, 4)
-        basic.pause(2000)
+        basic.pause(500)
         if (enviado > recibido) {
             activo = 1
             basic.pause(100)
