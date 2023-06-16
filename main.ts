@@ -23,7 +23,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         if (receivedNumber == 10) {
             basic.showString("you win")
-            basic.pause(200)
+            basic.pause(500)
             basic.showIcon(IconNames.Happy)
         }
     }
@@ -76,7 +76,7 @@ basic.forever(function () {
         }
         led.plot(barposition, 4)
         led.plot(barposition + 1, 4)
-        basic.pause(500)
+        basic.pause(2000)
         if (enviado > recibido) {
             activo = 1
             basic.pause(100)
@@ -89,7 +89,7 @@ basic.forever(function () {
         led.plot(ballx + balldx, Bally + balldy)
         led.unplot(ballx, Bally)
         basic.pause(tiempo)
-        tiempo = tiempo - 3
+        tiempo = tiempo - 4
         ballx = ballx + balldx
         Bally = Bally + balldy
         if (ballx == 4) {
