@@ -105,12 +105,12 @@ basic.forever(function () {
         }
         if (Bally == 0 && balldy == -1) {
             led.unplot(ballx, Bally)
+            activo = 0
             radio.sendNumber(Math.abs(ballx - 4))
             basic.pause(50)
             radio.sendNumber(-1)
             basic.pause(50)
             radio.sendNumber(balldx * -1)
-            activo = 0
         }
         if (Bally == 3 && (ballx == barposition || ballx == barposition + 1)) {
             balldy = balldy * -1
