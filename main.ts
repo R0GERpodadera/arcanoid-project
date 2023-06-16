@@ -26,7 +26,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         if (receivedNumber == 10) {
             basic.showString("you win")
-            basic.pause(500)
+            basic.pause(950)
             basic.showIcon(IconNames.Happy)
         }
     }
@@ -81,7 +81,7 @@ basic.forever(function () {
         }
         led.plot(barposition, 4)
         led.plot(barposition + 1, 4)
-        basic.pause(500)
+        basic.pause(1000)
         if (enviado > recibido) {
             activo = 1
             basic.pause(100)
